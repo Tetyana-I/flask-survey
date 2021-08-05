@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Questions{% endblock %}
+{% block content %} 
+
+<form action='/answer' method="POST"> 
+    <h5>Question {{number}}:</h5>
+    <h3>{{question}}</h3>    
+    {% for choice in choices %}
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="choice" id="{{number}}-{{choice}}" value="{{choice}}">
+            <label class="form-check-label" for="{{number}}-{{choice}}">
+                {{choice}}
+            </label>
+        </div>
+    {% endfor %}
+    <br>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form> 
+
+{% endblock %}
