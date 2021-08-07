@@ -1,21 +1,26 @@
-from flask import Flask, request, render_template, redirect, flash 
+from flask import Flask, request, render_template, redirect, flash, session
 from flask_debugtoolbar import DebugToolbarExtension
 from surveys import satisfaction_survey
 app = Flask(__name__)
 
-app.config['SECRET_KEY'] = "secret"
+app.config['SECRET_KEY'] = "secret_code_here"
 app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
 debug = DebugToolbarExtension(app)
 
-responses = []
+# responses = []
 number_of_questions = len(satisfaction_survey.questions)
 
 @app.route('/')
 def start_survey():
     """a start-page for a survey that shows the user the title of the survey, the instructions, and a button to start the survey """
-    responses.clear()
+    # responses.clear()
     return render_template('start.html', title = satisfaction_survey.title, instructions = satisfaction_survey.instructions)
 
+@app.route('/start', methods=['POST'])
+def handling_start():
+    """ WHY DO WE NEED POST??? """
+    responses = session["responses",[]]
+    return redirect('/question/0')
 
 @app.route('/questions/<question_number>')
 def question_page(question_number):

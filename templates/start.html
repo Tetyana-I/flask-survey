@@ -1,7 +1,11 @@
 {% extends "base.html" %}
 {% block title %}Survey Start{% endblock %}
 {% block content %} 
+<form action="/start" method="POST">
     <h2>{{title}}</h2>
     <p>{{instructions}}</p>
-    <a class="btn btn-primary" href="/questions/0" role="button">Start Survey</a>
+    <input class="btn btn-primary" type="submit">
+    <!-- <a  href="/questions/0" role="button">Start Survey</a>  -->
+</form>
+
 {% endblock %}
