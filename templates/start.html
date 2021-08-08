@@ -2,10 +2,9 @@
 {% block title %}Survey Start{% endblock %}
 {% block content %} 
 <form action="/start" method="POST">
-    <h2>{{title}}</h2>
+    <h3>{{session['title']}}</h3>
     <p>{{instructions}}</p>
-    <input class="btn btn-primary" type="submit">
-    <!-- <a  href="/questions/0" role="button">Start Survey</a>  -->
+    <button class="btn btn-primary">Start Survey</button>
 </form>
 
 {% endblock %}

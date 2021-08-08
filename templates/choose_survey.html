@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Choose Survey{% endblock %}
+{% block content %} 
+
+<form action='/start-page' method = "POST"> 
+    <h3>Choose your survey from the list:</h3>
+    {% for key,value in surveys %}
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="choice" id="{{key}}" value="{{key}}">
+            <label class="form-check-label" for="{{key}}">
+                {{value['title']}}
+            </label>
+        </div>
+    {% endfor %}
+    <br>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form> 
+
+{% endblock %}
